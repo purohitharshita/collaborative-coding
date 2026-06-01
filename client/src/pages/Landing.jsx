@@ -499,7 +499,27 @@ function Landing() {
           </div>
         </div>
       </section>
-
+      {/* ============ Stat ============ */}
+      <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
+        {[
+          { value: "5+", label: "Languages Supported" },
+          { value: "50ms", label: "Real-Time Updates" },
+          { value: "24/7", label: "Collaboration" },
+          { value: "100%", label: "Code Synchronization" },
+        ].map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-2xl border border-blue-500/20 bg-zinc-900/50 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40"
+          >
+            <div className="text-3xl font-bold text-blue-500">
+              {stat.value}
+            </div>
+            <div className="mt-2 text-sm text-zinc-400">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
       {/* ============ Features ============ */}
       <section className="px-6 py-16 border-t border-zinc-900">
         <div className="max-w-6xl mx-auto">
