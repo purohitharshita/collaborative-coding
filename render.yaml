@@ -1,0 +1,30 @@
+# Render Blueprint — declarative deployment config.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# To deploy: push this file to GitHub, then on Render dashboard:
+# New → Blueprint → connect this repo → it reads this file automatically.
+
+services:
+  - type: web
+    name: collab-coding-server
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: JDOODLE_CLIENT_ID
+        sync: false
+      - key: JDOODLE_CLIENT_SECRET
+        sync: false
+
+

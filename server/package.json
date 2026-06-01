@@ -1,0 +1,33 @@
+{
+  "name": "collab-coding-server",
+  "version": "0.1.0",
+  "description": "Express + Socket.IO backend for the real-time collaborative coding platform",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "collaborative",
+    "code-editor",
+    "socket.io",
+    "express"
+  ],
+  "author": "purohitharshita",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

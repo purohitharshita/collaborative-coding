@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* ====================================================================
+   Design tokens — semantic names that components actually use.
+   To retheme: change these variables, not the components.
+   ==================================================================== */
+@theme {
+  /* Type */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+
+  /* Surface scale — bg layers from deepest to most-elevated */
+  --color-surface-base:   #09090b;  /* zinc-950, page background    */
+  --color-surface-1:      #18181b;  /* zinc-900, cards / header     */
+  --color-surface-2:      #27272a;  /* zinc-800, inputs / dropdowns */
+  --color-surface-3:      #3f3f46;  /* zinc-700, borders / dividers */
+
+  /* Text */
+  --color-text-strong:    #fafafa;  /* zinc-50,  headings / primary */
+  --color-text-default:   #d4d4d8;  /* zinc-300, body               */
+  --color-text-muted:     #71717a;  /* zinc-500, captions / labels  */
+  --color-text-subtle:    #52525b;  /* zinc-600, placeholders       */
+
+  /* Accent — emerald, used for action / "live" / connection-up */
+  --color-accent:         #10b981;  /* emerald-500, primary action  */
+  --color-accent-hover:   #34d399;  /* emerald-400                  */
+  --color-accent-soft:    #064e3b;  /* emerald-900, subtle backgrounds */
+
+  /* Status */
+  --color-status-good:    #10b981;  /* emerald-500                  */
+  --color-status-warn:    #f59e0b;  /* amber-500                    */
+  --color-status-bad:     #f43f5e;  /* rose-500                     */
+}
+
+/* ====================================================================
+   Base — apply Inter to the document, JetBrains Mono to <code>/<pre>.
+   Monaco editor manages its own font; we don't touch it.
+   ==================================================================== */
+html {
+  background-color: var(--color-surface-base);
+  color: var(--color-text-default);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+/* ====================================================================
+   Remote cursors. Carried over from Phase 6 — palette rebalanced to
+   sit on the new zinc background. Each color picked for contrast
+   against zinc-950 specifically.
+   ==================================================================== */
+.remote-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  margin: 0 -1px;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.remote-cursor::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 4px;
+  margin-top: -4px;
+  margin-left: -3px;
+  background-color: inherit;
+}
+
+.remote-cursor-0 { background-color: #22d3ee; } /* cyan     */
+.remote-cursor-1 { background-color: #fbbf24; } /* amber    */
+.remote-cursor-2 { background-color: #f472b6; } /* pink     */
+.remote-cursor-3 { background-color: #a78bfa; } /* violet   */
+.remote-cursor-4 { background-color: #fb923c; } /* orange   */
+.remote-cursor-5 { background-color: #fb7185; } /* rose     */
+.remote-cursor-6 { background-color: #2dd4bf; } /* teal     */
+.remote-cursor-7 { background-color: #e879f9; } /* fuchsia  */
+
+/* ====================================================================
+   Landing feature-card micro-animations. Light by design — three
+   small moments rather than a busy loop. Each respects
+   prefers-reduced-motion via the media query below.
+   ==================================================================== */
+
+/* Caret marching slowly to the right then resetting */
+@keyframes feature-caret {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  45%      { transform: translateX(56px); opacity: 1; }
+  50%      { transform: translateX(56px); opacity: 0; }
+  55%      { transform: translateX(0);   opacity: 0; }
+  60%      { transform: translateX(0);   opacity: 1; }
+}
+.feature-caret {
+  animation: feature-caret 4s ease-in-out infinite;
+}
+
+/* Pill row — cycle which pill is "active" by sliding the highlight */
+@keyframes feature-pill-shift {
+  0%   { left: 0%;  }
+  16%  { left: 17%; }
+  33%  { left: 34%; }
+  50%  { left: 51%; }
+  66%  { left: 68%; }
+  83%  { left: 85%; }
+  100% { left: 0%;  }
+}
+.feature-pill-highlight {
+  animation: feature-pill-shift 8s steps(1, end) infinite;
+}
+
+/* Run-by tag fading in */
+@keyframes feature-fade-in {
+  0%, 40%  { opacity: 0; transform: translateY(2px); }
+  60%, 100% { opacity: 1; transform: translateY(0); }
+}
+.feature-fade-in {
+  animation: feature-fade-in 3s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-caret,
+  .feature-pill-highlight,
+  .feature-fade-in {
+    animation: none;
+  }
+}
+
+/* ====================================================================
+   Modal entry — backdrop fade and panel scale-in. Triggered by the
+   .modal-enter classes when the React component mounts.
+   ==================================================================== */
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modal-panel-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+.modal-backdrop-enter { animation: modal-backdrop-in 200ms ease-out; }
+.modal-panel-enter    { animation: modal-panel-in    200ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop-enter,
+  .modal-panel-enter {
+    animation: none;
+  }
+}
+
+/* ====================================================================
+   Toast — slides in from the right and back out. Used for ephemeral
+   confirmations ("Copied!") and inline errors (run failures).
+   ==================================================================== */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateX(0);    }
+  to   { opacity: 0; transform: translateX(20px); }
+}
+.toast-enter { animation: toast-in  180ms ease-out forwards; }
+.toast-exit  { animation: toast-out 180ms ease-in  forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-enter,
+  .toast-exit {
+    animation: none;
+  }
+}
+
+/* ====================================================================
+   Resize handle for the editor / output split. The handle itself is
+   thin; the active class on <html> coerces the system cursor and
+   disables pointer events on Monaco so its own cursor doesn't fight
+   ours during a drag.
+   ==================================================================== */
+.is-row-resizing {
+  cursor: row-resize !important;
+  user-select: none;
+}
+.is-row-resizing iframe,
+.is-row-resizing .monaco-editor {
+  pointer-events: none;
+}
+
