@@ -1,10 +1,11 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState, useCallback, useRef } from 'react'
 
-// Toast variants. Keeping the palette tight — emerald for success,
+// Toast variants. Keeping the palette tight — blue for success,
 // rose for errors, zinc for neutral info — so the Room header stays
 // readable when multiple toasts could stack.
 const VARIANT_STYLES = {
-  success: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300',
+  success: 'bg-blue-500/15 border-blue-500/40 text-blue-300',
   error:   'bg-rose-500/15 border-rose-500/40 text-rose-300',
   info:    'bg-zinc-800 border-zinc-700 text-zinc-200',
 }

@@ -29,7 +29,7 @@ function FeatureCard({ visual, title, description }) {
   )
 }
 
-// Card 1: a peer typing — fake code line + advancing emerald caret + tag.
+// Card 1: a peer typing — fake code line + advancing blue caret + tag.
 function CursorsVisual() {
   return (
     <div className="w-full font-mono text-sm">
@@ -37,17 +37,17 @@ function CursorsVisual() {
         <span className="text-zinc-600 select-none w-5">1</span>
         <span className="text-pink-400">def</span>
         <span>&nbsp;</span>
-        <span className="text-emerald-400">hello</span>
+        <span className="text-blue-400">hello</span>
         <span className="text-zinc-400">()</span>
         <span className="text-zinc-400">:</span>
-        {/* Caret rides along — emerald line + tiny flag */}
+        {/* Caret rides along — blue line + tiny flag */}
         <span className="relative ml-1 inline-block">
-          <span className="feature-caret inline-block w-0.5 h-4 bg-emerald-400" />
-          <span className="feature-caret absolute left-0 -top-1.5 w-2 h-1 bg-emerald-400" />
+          <span className="feature-caret inline-block w-0.5 h-4 bg-blue-400" />
+          <span className="feature-caret absolute left-0 -top-1.5 w-2 h-1 bg-blue-400" />
         </span>
       </div>
       <div className="flex items-center gap-1.5 text-xs">
-        <span className="w-2 h-2 rounded-full bg-emerald-400" />
+        <span className="w-2 h-2 rounded-full bg-blue-400" />
         <span className="text-zinc-400">Harshita is typing…</span>
       </div>
     </div>
@@ -61,7 +61,7 @@ function LanguagesVisual() {
     <div className="relative w-full max-w-[280px]">
       {/* Moving highlight — sits behind the pills, slides to the next slot every ~1.3s */}
       <span
-        className="feature-pill-highlight absolute top-0 h-7 rounded-md bg-emerald-500/20 border border-emerald-500/40"
+        className="feature-pill-highlight absolute top-0 h-7 rounded-md bg-blue-500/20 border border-blue-500/40"
         style={{ width: 'calc(16.66% - 4px)' }}
       />
       <div className="relative grid grid-cols-6 gap-1">
@@ -83,11 +83,11 @@ function ExecutionVisual() {
   return (
     <div className="w-full font-mono text-xs">
       <div className="text-zinc-500">
-        <span className="text-emerald-400">$</span> python main.py
+        <span className="text-blue-400">$</span> python main.py
       </div>
       <div className="text-zinc-100 mt-0.5">55</div>
       <div className="feature-fade-in mt-1.5 text-xs flex items-center gap-1.5 text-zinc-500">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
         <span>Run by Harshita · 142ms · exit 0</span>
       </div>
     </div>
@@ -98,11 +98,11 @@ function ExecutionVisual() {
 // Editor mockup — pure static JSX, no Monaco. Cheaper than a real
 // editor and gives us pixel control over the "look at this product"
 // hero shot. Code is hand-rolled with span colors that mimic VS Code's
-// dark+ theme; numbers are emerald-tinged to feel on-brand.
+// dark+ theme; numbers are blue-tinged to feel on-brand.
 // ===================================================================
 function EditorMockup() {
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-950 shadow-2xl shadow-emerald-500/5 overflow-hidden">
+    <div className="rounded-xl border border-zinc-800 bg-zinc-950 shadow-2xl shadow-blue-500/5 overflow-hidden">
       {/* Window chrome */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-zinc-800 bg-zinc-900">
         <div className="flex items-center gap-2">
@@ -112,9 +112,9 @@ function EditorMockup() {
         </div>
         <div className="flex items-center gap-3 text-xs">
           <span className="text-zinc-400">Python</span>
-          <span className="px-2 py-0.5 rounded bg-emerald-500 text-white font-medium">Run</span>
-          <span className="flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="px-2 py-0.5 rounded bg-blue-500 text-white font-medium">Run</span>
+          <span className="flex items-center gap-1.5 text-blue-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
             Live
           </span>
         </div>
@@ -124,12 +124,12 @@ function EditorMockup() {
       <div className="px-4 py-2 border-b border-zinc-800 bg-zinc-900/50 flex items-center gap-2 text-xs">
         <span className="text-zinc-500">In this room:</span>
         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-200">
-          <span className="w-2 h-2 rounded-full bg-emerald-400" />
+          <span className="w-2 h-2 rounded-full bg-blue-400" />
           Harshita
         </span>
         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-200">
           <span className="w-2 h-2 rounded-full bg-cyan-400" />
-          Harshita
+          Pranshu
         </span>
       </div>
 
@@ -137,11 +137,11 @@ function EditorMockup() {
       <div className="px-4 py-4 font-mono text-sm leading-relaxed">
         <div className="flex">
           <span className="text-zinc-600 select-none w-6">1</span>
-          <span><span className="text-pink-400">def</span> <span className="text-emerald-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">):</span></span>
+          <span><span className="text-pink-400">def</span> <span className="text-blue-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">):</span></span>
         </div>
         <div className="flex">
           <span className="text-zinc-600 select-none w-6">2</span>
-          <span className="pl-4"><span className="text-pink-400">if</span> <span className="text-amber-200">n</span> <span className="text-zinc-400">&lt;</span> <span className="text-emerald-300">2</span><span className="text-zinc-400">:</span></span>
+          <span className="pl-4"><span className="text-pink-400">if</span> <span className="text-amber-200">n</span> <span className="text-zinc-400">&lt;</span> <span className="text-blue-300">2</span><span className="text-zinc-400">:</span></span>
         </div>
         <div className="flex">
           <span className="text-zinc-600 select-none w-6">3</span>
@@ -149,7 +149,7 @@ function EditorMockup() {
         </div>
         <div className="flex">
           <span className="text-zinc-600 select-none w-6">4</span>
-          <span className="pl-4"><span className="text-pink-400">return</span> <span className="text-emerald-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">-</span><span className="text-emerald-300">1</span><span className="text-zinc-400">) +</span> <span className="text-emerald-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">-</span><span className="text-emerald-300">2</span><span className="text-zinc-400">)</span></span>
+          <span className="pl-4"><span className="text-pink-400">return</span> <span className="text-blue-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">-</span><span className="text-blue-300">1</span><span className="text-zinc-400">) +</span> <span className="text-blue-400">fibonacci</span><span className="text-zinc-400">(</span><span className="text-amber-200">n</span><span className="text-zinc-400">-</span><span className="text-blue-300">2</span><span className="text-zinc-400">)</span></span>
         </div>
         <div className="flex">
           <span className="text-zinc-600 select-none w-6">5</span>
@@ -162,12 +162,12 @@ function EditorMockup() {
             <span className="text-zinc-400">(</span>
             <span className="text-cyan-300">fibonacci</span>
             <span className="text-zinc-400">(</span>
-            <span className="text-emerald-300">10</span>
+            <span className="text-blue-300">10</span>
             <span className="text-zinc-400">))</span>
-            {/* Harshita's cursor — emerald, position-relative so the flag stacks above */}
+            {/* Harshita's cursor — blue, position-relative so the flag stacks above */}
             <span className="relative inline-block">
-              <span className="absolute -left-px top-1 inline-block w-0.5 h-5 bg-emerald-400 animate-pulse" />
-              <span className="absolute -left-1 -top-3 inline-block w-2 h-1 bg-emerald-400" />
+              <span className="absolute -left-px top-1 inline-block w-0.5 h-5 bg-blue-400 animate-pulse" />
+              <span className="absolute -left-1 -top-3 inline-block w-2 h-1 bg-blue-400" />
             </span>
           </span>
         </div>
@@ -294,11 +294,11 @@ function Modal({ mode, onClose, name, navigate }) {
       aria-labelledby="modal-title"
     >
       <div
-        className="modal-panel-enter w-full max-w-md rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl shadow-emerald-500/10 overflow-hidden"
+        className="modal-panel-enter w-full max-w-md rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl shadow-blue-500/10 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ===== Gradient header strip ===== */}
-        <div className="relative px-7 pt-7 pb-6 bg-gradient-to-br from-emerald-500/10 via-zinc-900 to-zinc-900 border-b border-zinc-800">
+        <div className="relative px-7 pt-7 pb-6 bg-gradient-to-br from-blue-500/10 via-zinc-900 to-zinc-900 border-b border-zinc-800">
           {/* Close button — absolute so the header content doesn't have to leave room */}
           <button
             onClick={onClose}
@@ -311,7 +311,7 @@ function Modal({ mode, onClose, name, navigate }) {
           </button>
 
           {/* Glyph in a glowing circle */}
-          <div className="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 shadow-lg shadow-emerald-500/10">
+          <div className="w-11 h-11 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4 shadow-lg shadow-blue-500/10">
             {config.glyph}
           </div>
 
@@ -325,7 +325,7 @@ function Modal({ mode, onClose, name, navigate }) {
         <div className="px-7 py-6">
           {/* Anonymous-mode badge */}
           <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-lg bg-zinc-950/80 border border-zinc-800">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+            <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />
             <span className="text-sm text-zinc-400">
               Joining as <span className="font-medium text-zinc-100">{name}</span>
             </span>
@@ -344,7 +344,7 @@ function Modal({ mode, onClose, name, navigate }) {
                 placeholder="Leave blank for a public room"
                 autoFocus
                 autoComplete="new-password"
-                className="w-full px-4 py-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+                className="w-full px-4 py-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition"
               />
               <p className="text-xs text-zinc-500 mt-2 mb-6">
                 Optional. If you set one, peers will need it to join.
@@ -353,7 +353,7 @@ function Modal({ mode, onClose, name, navigate }) {
               <button
                 onClick={handleCreate}
                 disabled={busy}
-                className="w-full px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 shadow-lg shadow-emerald-500/20"
+                className="w-full px-4 py-2.5 rounded-lg bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 shadow-lg shadow-blue-500/20"
               >
                 {busy ? config.submitBusyLabel : config.submitLabel}
               </button>
@@ -370,7 +370,7 @@ function Modal({ mode, onClose, name, navigate }) {
                 onChange={(e) => setJoinId(e.target.value)}
                 placeholder="e.g. abc12345"
                 autoFocus
-                className="w-full px-4 py-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+                className="w-full px-4 py-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition"
               />
               <p className="text-xs text-zinc-500 mt-2 mb-6">
                 Accept either the short ID or a full URL like{' '}
@@ -380,7 +380,7 @@ function Modal({ mode, onClose, name, navigate }) {
               <button
                 type="submit"
                 disabled={!joinId.trim()}
-                className="w-full px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 shadow-lg shadow-emerald-500/20"
+                className="w-full px-4 py-2.5 rounded-lg bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 shadow-lg shadow-blue-500/20"
               >
                 {config.submitLabel}
               </button>
@@ -452,9 +452,9 @@ function Landing() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-50 mb-5 leading-tight">
-                Code together,
+                 Write, Collaborate, 
                 <br />
-                <span className="text-emerald-400">in real time.</span>
+                <span className="text-blue-400">Execute</span>
               </h1>
               <p className="text-lg text-zinc-400 mb-8 leading-relaxed">
                 Spin up a room, share the link, and edit the same file with live cursors,
@@ -471,7 +471,7 @@ function Landing() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Harshita"
-                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 transition"
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition"
                 />
               </div>
 
@@ -479,7 +479,7 @@ function Landing() {
                 <button
                   onClick={() => openModal('create')}
                   disabled={!canProceed}
-                  className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 shadow-lg shadow-emerald-500/20"
+                  className="px-6 py-3 rounded-lg bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-100 shadow-lg shadow-blue-500/20"
                 >
                   Create a room
                 </button>
@@ -538,7 +538,7 @@ function Landing() {
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-300 hover:text-emerald-400 transition"
+              className="text-zinc-300 hover:text-blue-400 transition"
             >
               @purohitharshita
             </a>

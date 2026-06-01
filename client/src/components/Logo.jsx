@@ -1,5 +1,5 @@
 // Wordmark for CollabCode. The bracket glyph mirrors the favicon design:
-// two square brackets framing an emerald dot — code-environment + "live".
+// two square brackets framing an blue dot — code-environment + "live".
 function Logo({ size = 'md' }) {
   const sizes = {
     sm: { icon: 18, text: 'text-base' },
@@ -25,7 +25,7 @@ function Logo({ size = 'md' }) {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <circle cx="16" cy="16" r="2" fill="#34d399" />
+        <circle cx="16" cy="16" r="2" fill="#3B82F6" />
       </svg>
       <span className={`font-semibold tracking-tight text-zinc-50 ${text}`}>
         CollabCode

@@ -21,13 +21,13 @@
   --color-text-muted:     #71717a;  /* zinc-500, captions / labels  */
   --color-text-subtle:    #52525b;  /* zinc-600, placeholders       */
 
-  /* Accent — emerald, used for action / "live" / connection-up */
-  --color-accent:         #10b981;  /* emerald-500, primary action  */
-  --color-accent-hover:   #34d399;  /* emerald-400                  */
-  --color-accent-soft:    #064e3b;  /* emerald-900, subtle backgrounds */
+  /* Accent — blue, used for action / "live" / connection-up */
+  --color-accent:         #10b981;  /* blue-500, primary action  */
+  --color-accent-hover:   #3B82F6;  /* blue-400                  */
+  --color-accent-soft:    #064e3b;  /* blue-900, subtle backgrounds */
 
   /* Status */
-  --color-status-good:    #10b981;  /* emerald-500                  */
+  --color-status-good:    #10b981;  /* blue-500                  */
   --color-status-warn:    #f59e0b;  /* amber-500                    */
   --color-status-bad:     #f43f5e;  /* rose-500                     */
 }
@@ -75,7 +75,7 @@ code, pre, kbd, samp {
 .remote-cursor-0 { background-color: #22d3ee; } /* cyan     */
 .remote-cursor-1 { background-color: #fbbf24; } /* amber    */
 .remote-cursor-2 { background-color: #f472b6; } /* pink     */
-.remote-cursor-3 { background-color: #a78bfa; } /* violet   */
+.remote-cursor-3 { background-color: #a78bfa; } /* blue   */
 .remote-cursor-4 { background-color: #fb923c; } /* orange   */
 .remote-cursor-5 { background-color: #fb7185; } /* rose     */
 .remote-cursor-6 { background-color: #2dd4bf; } /* teal     */

@@ -22,7 +22,7 @@ const AVATAR_COLORS = [
   'bg-cyan-400',
   'bg-amber-400',
   'bg-pink-400',
-  'bg-violet-400',
+  'bg-blue-400',
   'bg-orange-400',
   'bg-rose-400',
   'bg-teal-400',
@@ -174,16 +174,19 @@ function Room() {
   // immediately (public / cached password) or show a password prompt first.
   useEffect(() => {
     let cancelled = false
-
-    setStatus('probing')
-    setErrorMessage(null)
-    setUsers([])
-    setConnected(false)
-    setSocketId(null)
-    setPasswordInput('')
     passwordRef.current = null
 
     async function probe() {
+      await Promise.resolve()
+      if (cancelled) return
+
+      setStatus('probing')
+      setErrorMessage(null)
+      setUsers([])
+      setConnected(false)
+      setSocketId(null)
+      setPasswordInput('')
+
       try {
         const res = await fetch(`${SERVER_URL}/api/rooms/${roomId}`)
         if (!res.ok) throw new Error(`probe failed (${res.status})`)
@@ -523,7 +526,7 @@ function Room() {
               to="/"
               aria-label="Back to home"
               title="Back to home"
-              className="w-8 h-8 rounded-md border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-emerald-400 hover:border-zinc-700 hover:bg-zinc-800 transition flex items-center justify-center shrink-0"
+              className="w-8 h-8 rounded-md border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-blue-400 hover:border-zinc-700 hover:bg-zinc-800 transition flex items-center justify-center shrink-0"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="19" y1="12" x2="5" y2="12" />
@@ -533,7 +536,7 @@ function Room() {
             <div className="flex items-center gap-2">
               <h1 className="text-lg font-semibold tracking-tight">
                 Room{' '}
-                <span className="font-mono text-emerald-400">{roomId}</span>
+                <span className="font-mono text-blue-400">{roomId}</span>
               </h1>
               <button
                 onClick={async () => {
@@ -558,7 +561,7 @@ function Room() {
                     document.body.removeChild(ta)
                   }
                 }}
-                className="p-1.5 rounded-md text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800/60 transition"
+                className="p-1.5 rounded-md text-zinc-400 hover:text-blue-400 hover:bg-zinc-800/60 transition"
                 aria-label="Copy room URL"
                 title="Copy room URL"
               >
@@ -580,7 +583,7 @@ function Room() {
                 })
               }}
               disabled={status !== 'connected'}
-              className="bg-zinc-900 text-zinc-100 text-sm rounded px-2 py-1 border border-zinc-800 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+              className="bg-zinc-900 text-zinc-100 text-sm rounded px-2 py-1 border border-zinc-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
               aria-label="Programming language"
             >
               {LANGUAGE_OPTIONS.map((opt) => (
@@ -592,14 +595,14 @@ function Room() {
               onClick={handleRun}
               disabled={executing || !connected}
               title={`Run code (${navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl'}+Enter)`}
-              className="px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition text-zinc-950 font-medium text-sm flex items-center gap-1.5"
+              className="px-3 py-1 rounded bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition text-zinc-950 font-medium text-sm flex items-center gap-1.5"
             >
               {executing ? (
                 'Running…'
               ) : (
                 <>
                   Run
-                  <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded bg-emerald-600/40 text-[10px] font-mono font-medium text-emerald-50">
+                  <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded bg-blue-600/40 text-[10px] font-mono font-medium text-blue-50">
                     {navigator.platform.toLowerCase().includes('mac') ? '⌘' : 'Ctrl'}↵
                   </kbd>
                 </>
@@ -609,10 +612,10 @@ function Room() {
             <div className="flex items-center gap-2">
               <span
                 className={`w-2 h-2 rounded-full ${
-                  connected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
+                  connected ? 'bg-blue-400 animate-pulse' : 'bg-amber-400'
                 }`}
               />
-              <span className={connected ? 'text-emerald-400' : 'text-amber-400'}>
+              <span className={connected ? 'text-blue-400' : 'text-amber-400'}>
                 {connected ? 'Connected' : 'Connecting…'}
               </span>
             </div>
@@ -671,7 +674,7 @@ function Room() {
               monacoRef.current = monaco
               decorationsRef.current = editor.createDecorationsCollection([])
 
-              // Custom Monaco theme that matches our zinc/emerald palette.
+              // Custom Monaco theme that matches our zinc/blue palette.
               // Defined inside onMount so we have a guaranteed monaco namespace;
               // monaco.editor.defineTheme is idempotent — re-registering on every
               // mount is fine and only costs microseconds.
@@ -689,10 +692,10 @@ function Room() {
                   'editorLineNumber.activeForeground':  '#a1a1aa', // zinc-400, current line
                   'editor.lineHighlightBackground':     '#18181b', // zinc-900, current-line highlight
                   'editor.lineHighlightBorder':         '#00000000',
-                  'editor.selectionBackground':         '#10b98140', // emerald with alpha
+                  'editor.selectionBackground':         '#10b98140', // blue with alpha
                   'editor.inactiveSelectionBackground': '#10b98120',
                   'editor.selectionHighlightBackground':'#10b98120',
-                  'editorCursor.foreground':            '#34d399', // emerald-400 self-cursor
+                  'editorCursor.foreground':            '#3B82F6', // blue-400 self-cursor
                   'editorWhitespace.foreground':        '#27272a', // zinc-800
                   'editorIndentGuide.background':       '#18181b',
                   'editorIndentGuide.activeBackground': '#3f3f46',
@@ -706,7 +709,7 @@ function Room() {
                   'editorSuggestWidget.background':     '#18181b',
                   'editorSuggestWidget.border':         '#27272a',
                   'editorSuggestWidget.selectedBackground': '#27272a',
-                  'editorSuggestWidget.highlightForeground': '#34d399',
+                  'editorSuggestWidget.highlightForeground': '#3B82F6',
                   'editorHoverWidget.background':       '#18181b',
                   'editorHoverWidget.border':           '#27272a',
                 },
@@ -755,7 +758,7 @@ function Room() {
           aria-orientation="horizontal"
           aria-label="Resize output panel"
           title="Drag to resize"
-          className="h-1.5 bg-zinc-900 hover:bg-emerald-500/40 active:bg-emerald-500/60 cursor-row-resize transition-colors group relative"
+          className="h-1.5 bg-zinc-900 hover:bg-blue-500/40 active:bg-blue-500/60 cursor-row-resize transition-colors group relative"
         >
           <div className="absolute inset-x-0 -top-1 -bottom-1" />
           </div>
@@ -797,7 +800,7 @@ function Room() {
                   <span
                     className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-medium ${
                       result.exitCode === 0
-                        ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+                        ? 'bg-blue-500/15 text-blue-300 border border-blue-500/30'
                         : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
                     }`}
                   >
@@ -813,13 +816,13 @@ function Room() {
                 <div className="p-4 text-rose-400 font-mono text-sm">{runError}</div>
               ) : !result ? (
                 <div className="p-4 text-zinc-600 italic text-sm font-mono">
-                  <span className="text-emerald-500/70">$</span> waiting for first run…
+                  <span className="text-blue-500/70">$</span> waiting for first run…
                 </div>
               ) : (
                 <div className="p-3 font-mono text-sm leading-relaxed">
                   {/* Fake prompt line so the panel reads as a terminal */}
                   <div className="text-zinc-500 mb-2">
-                    <span className="text-emerald-400">$</span>{' '}
+                    <span className="text-blue-400">$</span>{' '}
                     <span className="text-zinc-400">run</span>{' '}
                     <span className="text-zinc-300">{result.language}</span>
                   </div>
@@ -899,7 +902,7 @@ function NotFoundPage({ roomId }) {
       <main className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-md">
           {/* Glyph */}
-          <div className="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 mx-auto">
+          <div className="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 mx-auto">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />
             </svg>
@@ -918,7 +921,7 @@ function NotFoundPage({ roomId }) {
             <span className="font-mono text-sm text-zinc-200 truncate">{roomId}</span>
             <button
               onClick={handleCopyId}
-              className="ml-auto text-xs text-zinc-500 hover:text-emerald-400 transition shrink-0"
+              className="ml-auto text-xs text-zinc-500 hover:text-blue-400 transition shrink-0"
               aria-label="Copy room ID"
             >
               {copied ? 'Copied' : 'Copy'}
@@ -937,12 +940,12 @@ function NotFoundPage({ roomId }) {
                 value={retryId}
                 onChange={(e) => setRetryId(e.target.value)}
                 placeholder="Room ID or URL"
-                className="flex-1 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition text-sm"
+                className="flex-1 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition text-sm"
               />
               <button
                 type="submit"
                 disabled={!retryId.trim()}
-                className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 text-sm"
+                className="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950 text-sm"
               >
                 Join
               </button>
@@ -1001,7 +1004,7 @@ function ErrorPage({ message, onRetry }) {
           <div className="flex flex-col gap-2">
             <button
               onClick={onRetry}
-              className="w-full px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 transition font-medium text-zinc-950 text-sm"
+              className="w-full px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-400 transition font-medium text-zinc-950 text-sm"
             >
               Try again
             </button>
@@ -1030,9 +1033,9 @@ function ProbingPage() {
 
       <main className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="flex flex-col items-center gap-4">
-          {/* Spinner — emerald ring with a transparent gap rotating */}
+          {/* Spinner — blue ring with a transparent gap rotating */}
           <div
-            className="w-10 h-10 rounded-full border-2 border-zinc-800 border-t-emerald-400 animate-spin"
+            className="w-10 h-10 rounded-full border-2 border-zinc-800 border-t-blue-400 animate-spin"
             aria-hidden="true"
           />
           <p className="text-sm text-zinc-500">Loading room…</p>
@@ -1055,7 +1058,7 @@ function PasswordPage({ roomId, passwordInput, setPasswordInput, onSubmit, error
       <main className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-md">
           {/* Glyph — padlock */}
-          <div className="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 mx-auto">
+          <div className="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 mx-auto">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="11" width="18" height="11" rx="2" />
               <path d="M7 11V7a5 5 0 0110 0v4" />
@@ -1082,12 +1085,12 @@ function PasswordPage({ roomId, passwordInput, setPasswordInput, onSubmit, error
               placeholder="Enter room password"
               autoFocus
               autoComplete="current-password"
-              className="w-full px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition mb-4"
+              className="w-full px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition mb-4"
             />
             <button
               type="submit"
               disabled={!passwordInput}
-              className="w-full px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950"
+              className="w-full px-4 py-2.5 rounded-lg bg-blue-500 hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-zinc-950"
             >
               Join room
             </button>
@@ -1128,13 +1131,6 @@ function EditableChip({ name, colorClass, onSave }) {
     }
   }, [editing])
 
-  // If the name changes server-side while we're not editing (e.g. another
-  // tab edits it), keep the draft in sync so re-opening the input shows
-  // the latest. Don't clobber an in-progress draft though.
-  useEffect(() => {
-    if (!editing) setDraft(name)
-  }, [name, editing])
-
   const commit = () => {
     const trimmed = draft.trim().slice(0, 40)
     if (trimmed && trimmed !== name) {
@@ -1150,7 +1146,7 @@ function EditableChip({ name, colorClass, onSave }) {
 
   if (editing) {
     return (
-      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-900 ring-1 ring-emerald-400 border border-zinc-800">
+      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-900 ring-1 ring-blue-400 border border-zinc-800">
         <span
           className={`w-2 h-2 rounded-full ${colorClass}`}
           aria-hidden="true"
@@ -1170,7 +1166,7 @@ function EditableChip({ name, colorClass, onSave }) {
         />
         <button
           onClick={commit}
-          className="text-emerald-400 hover:text-emerald-300 transition"
+          className="text-blue-400 hover:text-blue-300 transition"
           aria-label="Save name"
           title="Save (Enter)"
         >
@@ -1195,7 +1191,7 @@ function EditableChip({ name, colorClass, onSave }) {
   return (
     <button
       onClick={() => setEditing(true)}
-      className="group inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-900 text-zinc-200 ring-1 ring-emerald-400 border border-zinc-800 hover:bg-zinc-800 transition"
+      className="group inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-900 text-zinc-200 ring-1 ring-blue-400 border border-zinc-800 hover:bg-zinc-800 transition"
       aria-label="Edit your name"
       title="Click to rename"
     >
