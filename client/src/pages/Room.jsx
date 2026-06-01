@@ -663,7 +663,7 @@ function Room() {
           <Editor
             height="100%"
             language={language}
-            theme="coderoom-dark"
+            theme="collabcode-dark"
             value={code}
             onChange={handleChange}
             onMount={(editor, monaco) => {
@@ -675,7 +675,7 @@ function Room() {
               // Defined inside onMount so we have a guaranteed monaco namespace;
               // monaco.editor.defineTheme is idempotent — re-registering on every
               // mount is fine and only costs microseconds.
-              monaco.editor.defineTheme('coderoom-dark', {
+              monaco.editor.defineTheme('collabcode-dark', {
                 base: 'vs-dark',
                 inherit: true,
                 rules: [
@@ -711,7 +711,7 @@ function Room() {
                   'editorHoverWidget.border':           '#27272a',
                 },
               })
-              monaco.editor.setTheme('coderoom-dark')
+              monaco.editor.setTheme('collabcode-dark')
 
               // Ctrl/Cmd+Enter to run. monaco.KeyMod.CtrlCmd resolves to the
               // platform-appropriate modifier (Cmd on Mac, Ctrl elsewhere).

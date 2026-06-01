@@ -1,4 +1,4 @@
-// Wordmark for CodeRoom. The bracket glyph mirrors the favicon design:
+// Wordmark for CollabCode. The bracket glyph mirrors the favicon design:
 // two square brackets framing an emerald dot — code-environment + "live".
 function Logo({ size = 'md' }) {
   const sizes = {
@@ -28,7 +28,7 @@ function Logo({ size = 'md' }) {
         <circle cx="16" cy="16" r="2" fill="#34d399" />
       </svg>
       <span className={`font-semibold tracking-tight text-zinc-50 ${text}`}>
-        CodeRoom
+        CollabCode
       </span>
     </div>
   )
