@@ -13,14 +13,14 @@ function Logo({ size = 'md' }) {
       <svg width={icon} height={icon} viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path
           d="M 12 9 L 7 9 L 7 23 L 12 23"
-          stroke="#10b981"
+          stroke="#3B82F6"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M 20 9 L 25 9 L 25 23 L 20 23"
-          stroke="#10b981"
+          stroke="#3B82F6"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"

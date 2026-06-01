@@ -692,15 +692,15 @@ function Room() {
                   'editorLineNumber.activeForeground':  '#a1a1aa', // zinc-400, current line
                   'editor.lineHighlightBackground':     '#18181b', // zinc-900, current-line highlight
                   'editor.lineHighlightBorder':         '#00000000',
-                  'editor.selectionBackground':         '#10b98140', // blue with alpha
-                  'editor.inactiveSelectionBackground': '#10b98120',
-                  'editor.selectionHighlightBackground':'#10b98120',
+                  'editor.selectionBackground':         '#3B82F640', // blue with alpha
+                  'editor.inactiveSelectionBackground': '#3B82F620',
+                  'editor.selectionHighlightBackground':'#3B82F620',
                   'editorCursor.foreground':            '#3B82F6', // blue-400 self-cursor
                   'editorWhitespace.foreground':        '#27272a', // zinc-800
                   'editorIndentGuide.background':       '#18181b',
                   'editorIndentGuide.activeBackground': '#3f3f46',
-                  'editorBracketMatch.background':      '#10b98130',
-                  'editorBracketMatch.border':          '#10b981',
+                  'editorBracketMatch.background':      '#3B82F630',
+                  'editorBracketMatch.border':          '#3B82F6',
                   'scrollbarSlider.background':         '#27272a80',
                   'scrollbarSlider.hoverBackground':    '#3f3f4680',
                   'scrollbarSlider.activeBackground':   '#52525b80',

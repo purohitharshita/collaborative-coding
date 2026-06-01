@@ -22,12 +22,12 @@
   --color-text-subtle:    #52525b;  /* zinc-600, placeholders       */
 
   /* Accent — blue, used for action / "live" / connection-up */
-  --color-accent:         #10b981;  /* blue-500, primary action  */
+  --color-accent:         #3B82F6;  /* blue-500, primary action  */
   --color-accent-hover:   #3B82F6;  /* blue-400                  */
   --color-accent-soft:    #064e3b;  /* blue-900, subtle backgrounds */
 
   /* Status */
-  --color-status-good:    #10b981;  /* blue-500                  */
+  --color-status-good:    #3B82F6;  /* blue-500                  */
   --color-status-warn:    #f59e0b;  /* amber-500                    */
   --color-status-bad:     #f43f5e;  /* rose-500                     */
 }

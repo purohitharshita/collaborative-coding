@@ -2,14 +2,14 @@
   <rect width="32" height="32" rx="6" fill="#09090b"/>
   <path
     d="M 12 9 L 7 9 L 7 23 L 12 23"
-    stroke="#10b981"
+    stroke="#3B82F6"
     stroke-width="2.5"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
   <path
     d="M 20 9 L 25 9 L 25 23 L 20 23"
-    stroke="#10b981"
+    stroke="#3B82F6"
     stroke-width="2.5"
     stroke-linecap="round"
     stroke-linejoin="round"
